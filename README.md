@@ -1,6 +1,6 @@
 # stock-spike-frontend
 
-##The public Frontend to [stock-spike](https://stock-spike.com).
+## The public Frontend to [stock-spike](https://stock-spike.com).
 
 This readme will stay pretty bland - I suck at design and will spend all my extra focus on the bootstrap classes to make the actual site look decent
 
