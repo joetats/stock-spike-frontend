@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "symbol": "XLE",
+      "gain": 0.48998980699954564
+    },
+    {
+      "symbol": "XLU",
+      "gain": 0.05120530883942089
+    },
+    {
+      "symbol": "XLP",
+      "gain": 0.030050644477500124
+    },
+    {
+      "symbol": "XLV",
+      "gain": -0.033695419645560665
+    },
+    {
+      "symbol": "XLRE",
+      "gain": -0.11647018484625322
+    },
+    {
+      "symbol": "XLB",
+      "gain": -0.13382004270565143
+    },
+    {
+      "symbol": "XLI",
+      "gain": -0.15473744622477573
+    },
+    {
+      "symbol": "XLF",
+      "gain": -0.1613371891549856
+    },
+    {
+      "symbol": "XLK",
+      "gain": -0.17978274021862317
+    },
+    {
+      "symbol": "XLY",
+      "gain": -0.22422743305434834
+    },
+    {
+      "symbol": "XLC",
+      "gain": -0.3524716169357796
+    }
+  ],
+  "updated": "2022-07-13 21:58:06.672658",
+  "source": "Yahoo Finance",
+  "columns": [
+    {
+      "display": "12 Month Return (excluding last month)",
+      "name": "gain",
+      "type": "percentage",
+      "showOnMobile": true
+    }
+  ]
+}
