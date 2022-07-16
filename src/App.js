@@ -2,17 +2,29 @@ import NavBar from './components/layout/NavBar';
 import MainContent from './components/layout/MainContent';
 import Footer from './components/layout/Footer';
 import { BrowserRouter } from 'react-router-dom';
-
-const routes = [
-  { url: '/puts', title: 'S&P 500 Puts' },
-  { url: '/sectors', title: 'Sector ETF Momentum' },
-];
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [watchlists, setWatchlists] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await axios.get(
+        'https://www.sketchbrew.com/api/v1/stock-spike/watchlists/'
+      );
+      const links = data.data.map((r) => {
+        return { url: `/${r.name}`, title: r.navDesc };
+      });
+      setWatchlists(links);
+    };
+    fetchData();
+  }, []);
+
   return (
     <BrowserRouter>
-      <NavBar links={routes} />
-      <MainContent />
+      <NavBar links={watchlists} />
+      <MainContent links={watchlists} />
       <Footer />
     </BrowserRouter>
   );
