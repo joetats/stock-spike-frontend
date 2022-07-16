@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 const MainContent = (props) => {
   return (
-    <div className="min-vh-100 bg-dark">
+    <div className="min-vh-100 bg-dark pt-5">
       <div className="container pt-5">
         <Routes>
           <Route path="/" element={<PutsWatchlist />} />
