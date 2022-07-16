@@ -31,7 +31,7 @@ const PutsWatchlist = (props) => {
         key={r.symbol}
       />
     ));
-
+  console.log(puts);
   return (
     <>
       <h2 className="text-white">the "good" watchlist</h2>
