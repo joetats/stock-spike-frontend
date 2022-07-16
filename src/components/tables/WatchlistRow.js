@@ -1,22 +1,37 @@
 const WatchlistRow = (props) => {
-  const parseDate = (val) => {
-    const d = new Date(val);
-    return d.toLocaleString('en-US', {
-      month: '2-digit',
-      day: '2-digit',
-    });
+  const yahooLink = `https://finance.yahoo.com/quote/${props.symbol}/`;
+
+  const parseData = (type, val) => {
+    if (type === 'date') {
+      const d = new Date(val);
+      return d.toLocaleString('en-US', {
+        month: '2-digit',
+        day: '2-digit',
+      });
+    } else if (type === 'price') {
+      return `$${val}`;
+    } else if (type === 'percentage') {
+      return `${(val * 100).toFixed(2)}%`;
+    } else if (type === 'int') {
+      return -1 * Math.floor(val * 100);
+    } else {
+      return 'Error Parsing...';
+    }
   };
 
-  const delta = (parseFloat(props.delta) * -1).toFixed(2);
-  const exp = parseDate(props.exp);
-  const ask = `$${props.ask.toFixed(2)}`;
-  const ror = `${(props.ror * 100).toFixed(2)} %`;
-
-  const yahooLink = `https://finance.yahoo.com/quote/${props.symbol}/`;
+  const cells = props.columns.map((c) => {
+    const data = parseData(c.type, props.data[c.name]);
+    const mobile = c.showOnMobile ? '' : 'd-none d-sm';
+    return (
+      <td key={c.name} className={mobile}>
+        {data}
+      </td>
+    );
+  });
 
   return (
     <tr>
-      <th>
+      <td>
         <a
           href={yahooLink}
           target="_blank"
@@ -25,12 +40,8 @@ const WatchlistRow = (props) => {
         >
           {props.symbol}
         </a>
-      </th>
-      <th>{props.strike}</th>
-      <th>{exp}</th>
-      <th className="d-none d-sm">{delta}</th>
-      <th>{ask}</th>
-      <th>{ror}</th>
+      </td>
+      {cells}
     </tr>
   );
 };
