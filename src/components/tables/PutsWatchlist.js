@@ -7,7 +7,7 @@ const PutsWatchlist = (props) => {
   const [list, setList] = useState(null);
 
   useEffect(() => {
-    axios.get('https://sketchbrew.com/watchlists/puts').then((res) => {
+    axios.get('https://www.sketchbrew.com/watchlists/puts').then((res) => {
       setList(res.data.data);
     });
   }, [props.url]);
