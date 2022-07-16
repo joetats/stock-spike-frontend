@@ -12,9 +12,20 @@ const WatchlistRow = (props) => {
   const ask = `$${props.ask.toFixed(2)}`;
   const ror = `${(props.ror * 100).toFixed(2)} %`;
 
+  const yahooLink = `https://finance.yahoo.com/quote/${props.symbol}/`;
+
   return (
     <tr>
-      <th>{props.symbol}</th>
+      <th>
+        <a
+          href={yahooLink}
+          target="_blank"
+          className="link-light"
+          rel="noreferrer"
+        >
+          {props.symbol}
+        </a>
+      </th>
       <th>{props.strike}</th>
       <th>{exp}</th>
       <th className="d-none d-sm">{delta}</th>
