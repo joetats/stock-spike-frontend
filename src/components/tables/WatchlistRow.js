@@ -9,11 +9,15 @@ const WatchlistRow = (props) => {
         day: '2-digit',
       });
     } else if (type === 'price') {
-      return `$${val}`;
+      return `$${val.toFixed(2)}`;
     } else if (type === 'percentage') {
       return `${(val * 100).toFixed(2)}%`;
     } else if (type === 'int') {
+      return Math.floor(val).toLocaleString('en-US');
+    } else if (type === 'delta') {
       return -1 * Math.floor(val * 100);
+    } else if (type === 'strike') {
+      return val;
     } else {
       return 'Error Parsing...';
     }
@@ -21,7 +25,7 @@ const WatchlistRow = (props) => {
 
   const cells = props.columns.map((c) => {
     const data = parseData(c.type, props.data[c.name]);
-    const mobile = c.showOnMobile ? '' : 'd-none d-sm';
+    const mobile = c.showOnMobile ? '' : 'd-none d-sm-block';
     return (
       <td key={c.name} className={mobile}>
         {data}

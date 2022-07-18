@@ -11,6 +11,7 @@ const MainContent = (props) => {
           <Route path="/" element={<Landing links={props.links} />} />
           <Route path="/puts" element={<Watchlist route={route} />} />
           <Route path="/sector" element={<Watchlist route={route} />} />
+          <Route path="/volume" element={<Watchlist route={route} />} />
         </Routes>
       </div>
     </div>
