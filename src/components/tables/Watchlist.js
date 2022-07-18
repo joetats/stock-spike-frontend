@@ -18,6 +18,8 @@ const Watchlist = (props) => {
 
   if (!data) return null;
 
+  const d = data.updated.substring(0, data.updated.indexOf('.'));
+
   const puts = data.data
     .slice(0, 15)
     .map((r) => (
@@ -38,6 +40,7 @@ const Watchlist = (props) => {
   return (
     <>
       <h2 className="text-white">{data.header}</h2>
+      <em className="text-white">Updated: {d}</em>
       <p className="text-white text-center ps-4 mt-2">{data.subheader}</p>
       <table className="table table-dark table-striped table-bordered">
         <thead>
