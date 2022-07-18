@@ -40,7 +40,7 @@ const Watchlist = (props) => {
   return (
     <>
       <h2 className="text-white">{data.header}</h2>
-      <em className="text-white">Updated: {d}</em>
+      <em className="text-white ms-2">Updated: {d}</em>
       <p className="text-white text-center ps-4 mt-2">{data.subheader}</p>
       <table className="table table-dark table-striped table-bordered">
         <thead>
