@@ -32,7 +32,7 @@ const Watchlist = (props) => {
     ));
 
   const headers = data.columns.map((c) => (
-    <th key={c.name} className={c.showOnMobile ? '' : 'd-none d-sm'}>
+    <th key={c.name} className={c.showOnMobile ? '' : 'd-none d-sm-block'}>
       {c.display}
     </th>
   ));
