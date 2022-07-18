@@ -22,7 +22,7 @@ const NavBar = (props) => {
   });
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom">
       <a href="/" className="navbar-brand px-2">
         <h3 className="mb-0">stock-spike</h3>
       </a>
