@@ -25,6 +25,8 @@ function App() {
 
   const flipThemeHandler = () => {
     const newTheme = !isDarkMode;
+
+    document.body.className = newTheme ? 'bg-dark' : 'bg-light';
     setIsDarkMode(newTheme);
   };
 
