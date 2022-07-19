@@ -24,7 +24,6 @@ function App() {
   }, []);
 
   const flipThemeHandler = () => {
-    console.log(isDarkMode);
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
   };

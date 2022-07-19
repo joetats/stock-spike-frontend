@@ -1,10 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import WatchlistRow from './WatchlistRow';
+import ThemeContext from '../../store/theme-context';
 
 const Watchlist = (props) => {
   const [data, setData] = useState(null);
+
+  const ctx = useContext(ThemeContext);
+
+  const themes = {};
+
+  if (ctx.isDarkMode) {
+    themes.h2 = 'text-white';
+    themes.em = 'text-white ms-2';
+    themes.p = 'text-white text-center ps-4 mt-2';
+    themes.table = 'table table-dark table-striped table-bordered';
+  } else {
+    themes.h2 = 'text-dark';
+    themes.em = 'text-dark ms-2';
+    themes.p = 'text-dark text-center ps-4 mt-2';
+    themes.table = 'table table-light table-striped table-bordered';
+  }
 
   useEffect(() => {
     axios
@@ -39,10 +56,10 @@ const Watchlist = (props) => {
 
   return (
     <>
-      <h2 className="text-white">{data.header}</h2>
-      <em className="text-white ms-2">Updated: {d}</em>
-      <p className="text-white text-center ps-4 mt-2">{data.subheader}</p>
-      <table className="table table-dark table-striped table-bordered">
+      <h2 className={themes.h2}>{data.header}</h2>
+      <em className={themes.em}>Updated: {d}</em>
+      <p className={themes.p}>{data.subheader}</p>
+      <table className={themes.table}>
         <thead>
           <tr>
             <th>Symbol</th>

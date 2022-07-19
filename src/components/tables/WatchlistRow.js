@@ -1,5 +1,19 @@
+import { useContext } from 'react';
+
+import ThemeContext from '../../store/theme-context';
+
 const WatchlistRow = (props) => {
   const yahooLink = `https://finance.yahoo.com/quote/${props.symbol}/`;
+
+  const ctx = useContext(ThemeContext);
+
+  const themes = {};
+
+  if (ctx.isDarkMode) {
+    themes.link = 'link-light';
+  } else {
+    themes.link = 'link-dark';
+  }
 
   const parseData = (type, val) => {
     if (type === 'date') {
@@ -39,7 +53,7 @@ const WatchlistRow = (props) => {
         <a
           href={yahooLink}
           target="_blank"
-          className="link-light"
+          className={themes.link}
           rel="noreferrer"
         >
           {props.symbol}

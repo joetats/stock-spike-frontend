@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 
 import { Collapse } from 'bootstrap';
+import { Link } from 'react-router-dom';
 
 import ThemeContext from '../../store/theme-context';
 
@@ -22,9 +23,9 @@ const NavBar = (props) => {
   const links = props.links.map((i) => {
     return (
       <li className="nav-item" key={i.url}>
-        <a href={i.url} className="nav-link">
+        <Link to={i.url} className="nav-link">
           {i.title}
-        </a>
+        </Link>
       </li>
     );
   });
@@ -37,9 +38,9 @@ const NavBar = (props) => {
 
   return (
     <nav className={themes.nav}>
-      <a href="/" className="navbar-brand px-2">
+      <Link to="/" className="navbar-brand px-2">
         <h3 className="mb-0">stock-spike</h3>
-      </a>
+      </Link>
       <button
         className="navbar-toggler mx-3"
         data-toggle="collapse"
