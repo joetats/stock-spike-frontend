@@ -1,16 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import { Collapse } from 'bootstrap';
+import { Link } from 'react-router-dom';
+
+import ThemeContext from '../../store/theme-context';
 
 const NavBar = (props) => {
   const [toggle, setToggle] = useState(false);
 
+  const ctx = useContext(ThemeContext);
+
+  const themes = {};
+
+  if (ctx.isDarkMode) {
+    themes.nav =
+      'navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom';
+  } else {
+    themes.nav =
+      'navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom';
+  }
+
   const links = props.links.map((i) => {
     return (
       <li className="nav-item" key={i.url}>
-        <a href={i.url} className="nav-link">
+        <Link to={i.url} className="nav-link">
           {i.title}
-        </a>
+        </Link>
       </li>
     );
   });
@@ -22,10 +37,10 @@ const NavBar = (props) => {
   });
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom">
-      <a href="/" className="navbar-brand px-2">
+    <nav className={themes.nav}>
+      <Link to="/" className="navbar-brand px-2">
         <h3 className="mb-0">stock-spike</h3>
-      </a>
+      </Link>
       <button
         className="navbar-toggler mx-3"
         data-toggle="collapse"
