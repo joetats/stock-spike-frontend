@@ -14,6 +14,20 @@ const Footer = (props) => {
           Data provided for entertainment value with zero warranty. Not
           financial advice.
         </p>
+        <div class="form-check form-switch col-5 mx-auto">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+            onChange={props.onChangeTheme}
+          />
+          <label
+            className="form-check-label text-white"
+            for="flexSwitchCheckDefault"
+          >
+            Dark Mode!
+          </label>
+        </div>
         <p className="text-white">Copyright © {year} Joe Tatusko</p>
       </div>
     </footer>

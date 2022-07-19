@@ -1,9 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import { Collapse } from 'bootstrap';
 
+import ThemeContext from '../../store/theme-context';
+
 const NavBar = (props) => {
   const [toggle, setToggle] = useState(false);
+
+  const ctx = useContext(ThemeContext);
+
+  const themes = {};
+
+  if (ctx.isDarkMode) {
+    themes.nav =
+      'navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom';
+  } else {
+    themes.nav =
+      'navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom';
+  }
 
   const links = props.links.map((i) => {
     return (
@@ -22,7 +36,7 @@ const NavBar = (props) => {
   });
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom">
+    <nav className={themes.nav}>
       <a href="/" className="navbar-brand px-2">
         <h3 className="mb-0">stock-spike</h3>
       </a>

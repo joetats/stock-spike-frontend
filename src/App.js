@@ -4,9 +4,11 @@ import Footer from './components/layout/Footer';
 import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import ThemeContext from './store/theme-context';
 
 function App() {
   const [watchlists, setWatchlists] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +23,20 @@ function App() {
     fetchData();
   }, []);
 
+  const flipThemeHandler = () => {
+    console.log(isDarkMode);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+  };
+
   return (
-    <BrowserRouter>
-      <NavBar links={watchlists} />
-      <MainContent links={watchlists} />
-      <Footer />
-    </BrowserRouter>
+    <ThemeContext.Provider value={{ isDarkMode: isDarkMode }}>
+      <BrowserRouter>
+        <NavBar links={watchlists} />
+        <MainContent links={watchlists} />
+        <Footer onChangeTheme={flipThemeHandler} />
+      </BrowserRouter>
+    </ThemeContext.Provider>
   );
 }
 
