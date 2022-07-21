@@ -53,7 +53,18 @@ const Watchlist = (props) => {
       {c.display}
     </th>
   ));
-
+  if (data.data.length === 0) {
+    return (
+      <div className="container">
+        <h2 className={themes.h2}>{data.header}</h2>
+        <em className={themes.em}>Updated: {d}</em>
+        <h3 className={themes.h2 + ' mt-5 text-center'}>Nothing found!</h3>
+        <p className={themes.h2 + ' text-center'}>
+          Nothing in the S&P 500 made this watchlist today... maybe tomorrow!
+        </p>
+      </div>
+    );
+  }
   return (
     <>
       <h2 className={themes.h2}>{data.header}</h2>
