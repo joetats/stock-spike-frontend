@@ -20,10 +20,14 @@ const NavBar = (props) => {
       'navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom';
   }
 
+  const toggleHamburger = () => {
+    setToggle((toggle) => !toggle);
+  };
+
   const links = props.links.map((i) => {
     return (
       <li className="nav-item" key={i.url}>
-        <Link to={i.url} className="nav-link">
+        <Link to={i.url} className="nav-link" onClick={toggleHamburger}>
           {i.title}
         </Link>
       </li>
@@ -45,7 +49,7 @@ const NavBar = (props) => {
         className="navbar-toggler mx-3"
         data-toggle="collapse"
         data-target="#mainNavbar"
-        onClick={() => setToggle((toggle) => !toggle)}
+        onClick={toggleHamburger}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
