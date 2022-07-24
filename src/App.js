@@ -1,6 +1,7 @@
 import NavBar from './components/layout/NavBar';
 import MainContent from './components/layout/MainContent';
 import Footer from './components/layout/Footer';
+import Chart from './components/charts/Chart';
 import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode: isDarkMode }}>
+      <Chart></Chart>
       <BrowserRouter>
         <NavBar links={watchlists} />
         <MainContent links={watchlists} />
