@@ -44,7 +44,7 @@ const Chart = (props) => {
 
   return (
     <Modal onClose={props.onHideChart}>
-      <h1>Hi {props.symbol}</h1>
+      <h1>{props.symbol}</h1>
       <div style={{ width: '90%', height: '200px' }}>
         <ResponsiveContainer>
           <LineChart
@@ -75,9 +75,16 @@ const Chart = (props) => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <button className="btn btn-outline-danger" onClick={props.onHideChart}>
-        Close
-      </button>
+      <div className="row justify-content-center">
+        <div className="col-4">
+          <button
+            className="btn btn-outline-danger"
+            onClick={props.onHideChart}
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </Modal>
   );
 };

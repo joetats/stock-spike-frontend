@@ -34,8 +34,9 @@ function App() {
   };
 
   const showChartHandler = (symbol) => {
-    setChartIsShown(true);
+    // setChartIsShown(true);
     setTickerSymbol(symbol);
+    console.log('coming soon...');
   };
 
   const hideChartHandler = () => {

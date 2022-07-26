@@ -2,12 +2,10 @@ import { useContext } from 'react';
 
 import Landing from '../Landing';
 import Watchlist from '../tables/Watchlist';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ThemeContext from '../../store/theme-context';
 
 const MainContent = (props) => {
-  const route = useLocation().pathname;
-
   const ctx = useContext(ThemeContext);
 
   const themes = {};
