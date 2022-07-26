@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import WatchlistRow from './WatchlistRow';
@@ -6,6 +7,8 @@ import ThemeContext from '../../store/theme-context';
 
 const Watchlist = (props) => {
   const [data, setData] = useState(null);
+
+  const { watchlistId } = useParams();
 
   const ctx = useContext(ThemeContext);
 
@@ -26,12 +29,12 @@ const Watchlist = (props) => {
   useEffect(() => {
     axios
       .get(
-        `https://www.sketchbrew.com/api/v1/stock-spike/watchlists${props.route}`
+        `https://www.sketchbrew.com/api/v1/stock-spike/watchlists/${watchlistId}`
       )
       .then((res) => {
         setData(res.data);
       });
-  }, [props.route]);
+  }, [watchlistId]);
 
   if (!data) return null;
 
