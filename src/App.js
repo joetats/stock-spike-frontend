@@ -11,6 +11,7 @@ function App() {
   const [watchlists, setWatchlists] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [chartIsShown, setChartIsShown] = useState(false);
+  const [tickerSymbol, setTickerSymbol] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,20 +33,31 @@ function App() {
     setIsDarkMode(newTheme);
   };
 
-  const showChartHandler = () => {
+  const showChartHandler = (symbol) => {
     setChartIsShown(true);
+    setTickerSymbol(symbol);
   };
 
   const hideChartHandler = () => {
     setChartIsShown(false);
   };
 
+  const checkSymbolHandler = (e) => {
+    console.log(e);
+  };
+
   return (
     <ThemeContext.Provider value={{ isDarkMode: isDarkMode }}>
-      {chartIsShown && <Chart onHideChart={hideChartHandler} />}
+      {chartIsShown && (
+        <Chart onHideChart={hideChartHandler} symbol={tickerSymbol} />
+      )}
       <BrowserRouter>
         <NavBar links={watchlists} />
-        <MainContent links={watchlists} onShowChart={showChartHandler} />
+        <MainContent
+          links={watchlists}
+          onShowChart={showChartHandler}
+          onSetSymbol={checkSymbolHandler}
+        />
         <Footer onChangeTheme={flipThemeHandler} />
       </BrowserRouter>
     </ThemeContext.Provider>

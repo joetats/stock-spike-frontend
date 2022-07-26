@@ -13,6 +13,10 @@ const WatchlistRow = (props) => {
     themes.link = 'btn btn-link link-dark';
   }
 
+  const setSymbolHandler = () => {
+    props.onShowChart(props.symbol);
+  };
+
   const parseData = (type, val) => {
     if (type === 'date') {
       const d = new Date(val);
@@ -48,7 +52,7 @@ const WatchlistRow = (props) => {
   return (
     <tr>
       <td>
-        <button className={themes.link} onClick={props.onShowChart}>
+        <button className={themes.link} onClick={setSymbolHandler}>
           {props.symbol}
         </button>
       </td>
