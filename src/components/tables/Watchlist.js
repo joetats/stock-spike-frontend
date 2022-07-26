@@ -45,6 +45,7 @@ const Watchlist = (props) => {
         columns={data.columns}
         data={r}
         key={r.symbol}
+        onShowChart={props.onShowChart}
       />
     ));
 

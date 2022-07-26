@@ -23,9 +23,24 @@ const MainContent = (props) => {
       <div className="container pt-5">
         <Routes>
           <Route path="/" element={<Landing links={props.links} />} />
-          <Route path="/puts" element={<Watchlist route={route} />} />
-          <Route path="/sector" element={<Watchlist route={route} />} />
-          <Route path="/volume" element={<Watchlist route={route} />} />
+          <Route
+            path="/puts"
+            element={
+              <Watchlist route={route} onShowChart={props.onShowChart} />
+            }
+          />
+          <Route
+            path="/sector"
+            element={
+              <Watchlist route={route} onShowChart={props.onShowChart} />
+            }
+          />
+          <Route
+            path="/volume"
+            element={
+              <Watchlist route={route} onShowChart={props.onShowChart} />
+            }
+          />
         </Routes>
       </div>
     </div>

@@ -10,6 +10,7 @@ import ThemeContext from './store/theme-context';
 function App() {
   const [watchlists, setWatchlists] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [chartIsShown, setChartIsShown] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,12 +32,20 @@ function App() {
     setIsDarkMode(newTheme);
   };
 
+  const showChartHandler = () => {
+    setChartIsShown(true);
+  };
+
+  const hideChartHandler = () => {
+    setChartIsShown(false);
+  };
+
   return (
     <ThemeContext.Provider value={{ isDarkMode: isDarkMode }}>
-      <Chart></Chart>
+      {chartIsShown && <Chart onHideChart={hideChartHandler} />}
       <BrowserRouter>
         <NavBar links={watchlists} />
-        <MainContent links={watchlists} />
+        <MainContent links={watchlists} onShowChart={showChartHandler} />
         <Footer onChangeTheme={flipThemeHandler} />
       </BrowserRouter>
     </ThemeContext.Provider>
