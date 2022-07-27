@@ -20,8 +20,12 @@ const NavBar = (props) => {
       'navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom';
   }
 
-  const toggleHamburger = () => {
+  const toggleHamburgerHandler = () => {
     setToggle((toggle) => !toggle);
+  };
+
+  const closeHamburgerHandler = () => {
+    setToggle(false);
   };
 
   const links = props.links.map((i) => {
@@ -30,7 +34,7 @@ const NavBar = (props) => {
         <Link
           to={'watchlists' + i.url}
           className="nav-link"
-          onClick={toggleHamburger}
+          onClick={toggleHamburgerHandler}
         >
           {i.title}
         </Link>
@@ -46,14 +50,18 @@ const NavBar = (props) => {
 
   return (
     <nav className={themes.nav}>
-      <Link to="/" className="navbar-brand px-2" onClick={toggleHamburger}>
+      <Link
+        to="/"
+        className="navbar-brand px-2"
+        onClick={closeHamburgerHandler}
+      >
         <h3 className="mb-0">stock-spike</h3>
       </Link>
       <button
         className="navbar-toggler mx-3"
         data-toggle="collapse"
         data-target="#mainNavbar"
-        onClick={toggleHamburger}
+        onClick={toggleHamburgerHandler}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
