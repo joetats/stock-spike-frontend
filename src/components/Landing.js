@@ -22,7 +22,7 @@ const Landing = (props) => {
   const links = props.links.map((i) => {
     return (
       <li className={themes.list} key={i.url}>
-        <Link to={i.url} className={themes.link}>
+        <Link to={'watchlists' + i.url} className={themes.link}>
           {i.title}
         </Link>
       </li>

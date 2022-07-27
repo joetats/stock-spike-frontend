@@ -3,17 +3,19 @@ import { useContext } from 'react';
 import ThemeContext from '../../store/theme-context';
 
 const WatchlistRow = (props) => {
-  const yahooLink = `https://finance.yahoo.com/quote/${props.symbol}/`;
-
   const ctx = useContext(ThemeContext);
 
   const themes = {};
 
   if (ctx.isDarkMode) {
-    themes.link = 'link-light';
+    themes.link = ' btn btn-link link-light';
   } else {
-    themes.link = 'link-dark';
+    themes.link = 'btn btn-link link-dark';
   }
+
+  const setSymbolHandler = () => {
+    props.onShowChart(props.symbol);
+  };
 
   const parseData = (type, val) => {
     if (type === 'date') {
@@ -50,14 +52,9 @@ const WatchlistRow = (props) => {
   return (
     <tr>
       <td>
-        <a
-          href={yahooLink}
-          target="_blank"
-          className={themes.link}
-          rel="noreferrer"
-        >
+        <button className={themes.link} onClick={setSymbolHandler}>
           {props.symbol}
-        </a>
+        </button>
       </td>
       {cells}
     </tr>

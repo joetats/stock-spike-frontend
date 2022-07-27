@@ -37,14 +37,14 @@ const Footer = (props) => {
         <div className="row justify-content-center">
           <div className="col-5 col-sm-3">
             <div className="form-check form-switch">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="flexSwitchCheckDefault"
-                onChange={props.onChangeTheme}
-                checked={ctx.isDarkMode}
-              />
-              <label className={themes.label} for="flexSwitchCheckDefault">
+              <label className={themes.label}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckDefault"
+                  onChange={props.onChangeTheme}
+                  checked={ctx.isDarkMode}
+                />
                 Dark Mode!
               </label>
             </div>

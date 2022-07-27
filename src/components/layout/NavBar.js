@@ -27,7 +27,11 @@ const NavBar = (props) => {
   const links = props.links.map((i) => {
     return (
       <li className="nav-item" key={i.url}>
-        <Link to={i.url} className="nav-link" onClick={toggleHamburger}>
+        <Link
+          to={'watchlists' + i.url}
+          className="nav-link"
+          onClick={toggleHamburger}
+        >
           {i.title}
         </Link>
       </li>
