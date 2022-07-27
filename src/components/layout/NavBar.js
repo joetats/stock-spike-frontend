@@ -46,7 +46,7 @@ const NavBar = (props) => {
 
   return (
     <nav className={themes.nav}>
-      <Link to="/" className="navbar-brand px-2">
+      <Link to="/" className="navbar-brand px-2" onClick={toggleHamburger}>
         <h3 className="mb-0">stock-spike</h3>
       </Link>
       <button
