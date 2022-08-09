@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import WatchlistRow from './WatchlistRow';
+import NothingFound from './NothingFound';
+import SortIcon from './SortIcon';
 import ThemeContext from '../../store/theme-context';
 
 const Watchlist = (props) => {
@@ -81,23 +83,22 @@ const Watchlist = (props) => {
   const headers = data.columns.map((c) => (
     <th
       key={c.name}
-      className={c.showOnMobile ? '' : 'd-none d-sm-block'}
+      className={c.showOnMobile ? '' : ' d-none d-sm-block'}
       onClick={() => sortColHandler(c.name, c.type)}
     >
-      {c.display}
+      <small>
+        {c.display}{' '}
+        {sortCol.sortCol === c.name ? (
+          <SortIcon asc={sortCol.sortColAsc} />
+        ) : (
+          ''
+        )}
+      </small>
     </th>
   ));
+
   if (data.data.length === 0) {
-    return (
-      <div className="container">
-        <h2 className={themes.h2}>{data.header}</h2>
-        <em className={themes.em}>Updated: {d}</em>
-        <h3 className={themes.h2 + ' mt-5 text-center'}>Nothing found!</h3>
-        <p className={themes.h2 + ' text-center'}>
-          Nothing in the S&P 500 made this watchlist today... maybe tomorrow!
-        </p>
-      </div>
-    );
+    return <NothingFound themes={themes} header={data.header} d={d} />;
   }
   return (
     <>
