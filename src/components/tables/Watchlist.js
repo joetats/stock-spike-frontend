@@ -95,8 +95,11 @@ const Watchlist = (props) => {
       <Stack spacing={2} my={5}>
         <Heading>{data.header}</Heading>
         <Text fontSize="sm">Updated: {d} UTC</Text>
-        <Text>{data.subheader}</Text>
       </Stack>
+
+      <Text align="center" my={2}>
+        {data.subheader}
+      </Text>
 
       <TableContainer>
         <Table size="sm">
