@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 
 function App() {
   const [watchlists, setWatchlists] = useState([]);
@@ -25,11 +25,13 @@ function App() {
 
   return (
     <ChakraProvider>
-      <BrowserRouter>
-        <NavBar links={watchlists} />
-        <MainContent links={watchlists} />
-        <Footer />
-      </BrowserRouter>
+      <Box minHeight="100vh">
+        <BrowserRouter>
+          <NavBar links={watchlists} />
+          <MainContent links={watchlists} />
+          <Footer />
+        </BrowserRouter>
+      </Box>
     </ChakraProvider>
   );
 }
