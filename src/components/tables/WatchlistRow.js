@@ -1,18 +1,6 @@
-import { useContext } from 'react';
-
-import ThemeContext from '../../store/theme-context';
+import { Tr, Td } from '@chakra-ui/react';
 
 const WatchlistRow = (props) => {
-  const ctx = useContext(ThemeContext);
-
-  const themes = {};
-
-  if (ctx.isDarkMode) {
-    themes.link = ' btn btn-link link-light';
-  } else {
-    themes.link = 'btn btn-link link-dark';
-  }
-
   const setSymbolHandler = () => {
     props.onShowChart(props.symbol);
   };
@@ -41,23 +29,16 @@ const WatchlistRow = (props) => {
 
   const cells = props.columns.map((c) => {
     const data = parseData(c.type, props.data[c.name]);
-    const mobile = c.showOnMobile ? '' : 'd-none d-sm-block';
-    return (
-      <td key={c.name} className={mobile}>
-        {data}
-      </td>
-    );
+    return <Td key={c.name}>{data}</Td>;
   });
 
   return (
-    <tr>
-      <td>
-        <button className={themes.link} onClick={setSymbolHandler}>
-          {props.symbol}
-        </button>
-      </td>
+    <Tr>
+      <Td>
+        <button onClick={setSymbolHandler}>{props.symbol}</button>
+      </Td>
       {cells}
-    </tr>
+    </Tr>
   );
 };
 
