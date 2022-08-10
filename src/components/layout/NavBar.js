@@ -34,6 +34,8 @@ export default function Simple(props) {
           <IconButton
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            color="blue.50"
+            bgColor="blue.700"
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}

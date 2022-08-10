@@ -36,6 +36,8 @@ export default function CallToActionWithAnnotation() {
               _hover={{
                 bg: 'blue.500',
               }}
+              href="/watchlists/puts"
+              as="a"
             >
               Watchlists!
             </Button>
@@ -47,6 +49,7 @@ export default function CallToActionWithAnnotation() {
               _hover={{
                 bg: 'blue.500',
               }}
+              isDisabled
             >
               Project George (coming soon...)
             </Button>
