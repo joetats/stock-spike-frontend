@@ -1,60 +1,39 @@
-import { useContext } from 'react';
+import {
+  Box,
+  Container,
+  VStack,
+  Text,
+  Link,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
-import ThemeContext from '../../store/theme-context';
-
-const Footer = (props) => {
+export default function SmallWithSocial() {
   const year = new Date().getFullYear();
 
-  const ctx = useContext(ThemeContext);
-
-  const themes = {};
-
-  if (ctx.isDarkMode) {
-    themes.footer = 'footer bg-dark';
-    themes.link = 'link-light';
-    themes.p = 'text-white';
-    themes.label = 'form-check-label text-white';
-  } else {
-    themes.footer = 'footer bg-light';
-    themes.link = 'link-dark';
-    themes.p = 'text-dark';
-    themes.label = 'form-check-label text-dark';
-  }
-
   return (
-    <footer className={themes.footer}>
-      <div className="container text-center pt-2">
-        <a
-          className={themes.link}
-          href="https://github.com/joetats/stock-spike-frontend"
-        >
-          I'm open source!
-        </a>
-        <p className={themes.p}>
+    <Box
+      bg={useColorModeValue('blue.200', 'blue.900')}
+      color={useColorModeValue('blue.700', 'blue.200')}
+    >
+      <Container
+        as={VStack}
+        maxW={'6xl'}
+        py={4}
+        direction={{ base: 'column', md: 'row' }}
+        spacing={1}
+        justify={{ base: 'center', md: 'space-between' }}
+        align={{ base: 'center', md: 'center' }}
+        color={'gray.800'}
+      >
+        <Link href="https://github.com/joetats/stock-spike-frontend" isExternal>
+          I'm Open Source!
+        </Link>
+        <Text align="center">
           Data provided for entertainment value with zero warranty. Not
           financial advice.
-        </p>
-        <div className="row justify-content-center">
-          <div className="col-5 col-sm-3">
-            <div className="form-check form-switch">
-              <label className={themes.label}>
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="flexSwitchCheckDefault"
-                  onChange={props.onChangeTheme}
-                  checked={ctx.isDarkMode}
-                />
-                Dark Mode!
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <p className={themes.p}>Copyright © {year} Joe Tatusko</p>
-      </div>
-    </footer>
+        </Text>
+        <Text>© {year} Joe Tatusko. All rights reserved</Text>
+      </Container>
+    </Box>
   );
-};
-
-export default Footer;
+}

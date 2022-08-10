@@ -1,43 +1,61 @@
-import { useContext } from 'react';
+import { Box, Heading, Container, Text, Button, Stack } from '@chakra-ui/react';
 
-import { Link } from 'react-router-dom';
-
-import ThemeContext from '../store/theme-context';
-
-const Landing = (props) => {
-  const ctx = useContext(ThemeContext);
-
-  const themes = {};
-
-  if (ctx.isDarkMode) {
-    themes.list = 'list-group-item text-white bg-dark border-bottom-0';
-    themes.link = 'btn btn-outline-light';
-    themes.div = 'container text-white text-center pt-5';
-  } else {
-    themes.list = 'list-group-item text-dark bg-light border-bottom-0';
-    themes.link = 'btn btn-outline-dark';
-    themes.div = 'container text-dark text-center pt-5';
-  }
-
-  const links = props.links.map((i) => {
-    return (
-      <li className={themes.list} key={i.url}>
-        <Link to={'watchlists' + i.url} className={themes.link}>
-          {i.title}
-        </Link>
-      </li>
-    );
-  });
-
+export default function CallToActionWithAnnotation() {
   return (
-    <div className="container">
-      <div id="header" className={themes.div}>
-        <h1 className="display-1">stock-spike</h1>
-        <p className="lead">Free analysis based on strategies from reddit</p>
-        <ul className="list-group list-group-flush">{links}</ul>
-      </div>
-    </div>
+    <>
+      <Container maxW={'3xl'}>
+        <Stack
+          as={Box}
+          textAlign={'center'}
+          spacing={{ base: 8, md: 14 }}
+          py={{ base: 20, md: 36 }}
+        >
+          <Heading
+            fontWeight={300}
+            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}
+          >
+            stock-spike
+          </Heading>
+          <Text color={'gray.800'}>
+            Free stock tips and strategies based on sifting through the chaos of
+            reddit.
+          </Text>
+          <Stack
+            direction={'column'}
+            spacing={3}
+            align={'center'}
+            alignSelf={'center'}
+            position={'relative'}
+          >
+            <Button
+              colorScheme={'blue'}
+              bg={'blue.400'}
+              rounded={'full'}
+              px={6}
+              _hover={{
+                bg: 'blue.500',
+              }}
+              href="/watchlists/puts"
+              as="a"
+            >
+              Watchlists!
+            </Button>
+            <Button
+              colorScheme={'blue'}
+              bg={'blue.400'}
+              rounded={'full'}
+              px={6}
+              _hover={{
+                bg: 'blue.500',
+              }}
+              isDisabled
+            >
+              Project George (coming soon...)
+            </Button>
+          </Stack>
+        </Stack>
+      </Container>
+    </>
   );
-};
-
-export default Landing;
+}
