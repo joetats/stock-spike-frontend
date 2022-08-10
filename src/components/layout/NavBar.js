@@ -17,7 +17,7 @@ const NavLink = (props) => (
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
-      bg: useColorModeValue('green.200', 'green.700'),
+      bg: useColorModeValue('blue.200', 'blue.700'),
     }}
     href={'/watchlists' + props.url}
   >
@@ -29,7 +29,7 @@ export default function Simple(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box bg={useColorModeValue('green.200', 'green.900')} px={4}>
+      <Box bg={useColorModeValue('blue.200', 'blue.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}

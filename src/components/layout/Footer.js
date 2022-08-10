@@ -12,8 +12,8 @@ export default function SmallWithSocial() {
 
   return (
     <Box
-      bg={useColorModeValue('green.200', 'green.900')}
-      color={useColorModeValue('green.700', 'green.200')}
+      bg={useColorModeValue('blue.200', 'blue.900')}
+      color={useColorModeValue('blue.700', 'blue.200')}
     >
       <Container
         as={VStack}

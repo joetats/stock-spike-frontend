@@ -29,23 +29,23 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}
           >
             <Button
-              colorScheme={'green'}
-              bg={'green.400'}
+              colorScheme={'blue'}
+              bg={'blue.400'}
               rounded={'full'}
               px={6}
               _hover={{
-                bg: 'green.500',
+                bg: 'blue.500',
               }}
             >
               Watchlists!
             </Button>
             <Button
-              colorScheme={'green'}
-              bg={'green.400'}
+              colorScheme={'blue'}
+              bg={'blue.400'}
               rounded={'full'}
               px={6}
               _hover={{
-                bg: 'green.500',
+                bg: 'blue.500',
               }}
             >
               Project George (coming soon...)
