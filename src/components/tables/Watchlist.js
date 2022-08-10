@@ -6,6 +6,9 @@ import WatchlistRow from './WatchlistRow';
 import NothingFound from './NothingFound';
 import SortIcon from './SortIcon';
 import {
+  Heading,
+  Text,
+  Stack,
   Container,
   Table,
   Thead,
@@ -89,9 +92,12 @@ const Watchlist = (props) => {
   }
   return (
     <Container>
-      <h2>{data.header}</h2>
-      <em>Updated: {d}</em>
-      <p>{data.subheader}</p>
+      <Stack spacing={2} my={5}>
+        <Heading>{data.header}</Heading>
+        <Text fontSize="sm">Updated: {d} UTC</Text>
+        <Text>{data.subheader}</Text>
+      </Stack>
+
       <TableContainer>
         <Table size="sm">
           <Thead>
