@@ -1,75 +1,69 @@
-import { useEffect, useState, useContext } from 'react';
+import {
+  Box,
+  Flex,
+  HStack,
+  Link,
+  IconButton,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
-import { Collapse } from 'bootstrap';
-import { Link } from 'react-router-dom';
+const NavLink = (props) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={'/watchlists' + props.url}
+  >
+    {props.title}
+  </Link>
+);
 
-import ThemeContext from '../../store/theme-context';
-
-const NavBar = (props) => {
-  const [toggle, setToggle] = useState(false);
-
-  const ctx = useContext(ThemeContext);
-
-  const themes = {};
-
-  if (ctx.isDarkMode) {
-    themes.nav =
-      'navbar navbar-expand-md navbar-dark bg-dark fixed-top border-bottom';
-  } else {
-    themes.nav =
-      'navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom';
-  }
-
-  const toggleHamburgerHandler = () => {
-    setToggle((toggle) => !toggle);
-  };
-
-  const closeHamburgerHandler = () => {
-    setToggle(false);
-  };
-
-  const links = props.links.map((i) => {
-    return (
-      <li className="nav-item" key={i.url}>
-        <Link
-          to={'watchlists' + i.url}
-          className="nav-link"
-          onClick={toggleHamburgerHandler}
-        >
-          {i.title}
-        </Link>
-      </li>
-    );
-  });
-
-  useEffect(() => {
-    const menu = document.getElementById('mainNavbar');
-    const boostrapCollapse = new Collapse(menu, { toggle: false });
-    toggle ? boostrapCollapse.show() : boostrapCollapse.hide();
-  });
-
+export default function Simple(props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <nav className={themes.nav}>
-      <Link
-        to="/"
-        className="navbar-brand px-2"
-        onClick={closeHamburgerHandler}
-      >
-        <h3 className="mb-0">stock-spike</h3>
-      </Link>
-      <button
-        className="navbar-toggler mx-3"
-        data-toggle="collapse"
-        data-target="#mainNavbar"
-        onClick={toggleHamburgerHandler}
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="mainNavbar">
-        <ul className="navbar-nav ms-auto px-2">{links}</ul>
-      </div>
-    </nav>
-  );
-};
+    <>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          <IconButton
+            size={'md'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <HStack spacing={8} alignItems={'center'}>
+            <Box>
+              <Link href="/">stock-spike</Link>
+            </Box>
+            <HStack
+              as={'nav'}
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}
+            >
+              {props.links.map((link) => (
+                <NavLink url={link.url} title={link.title} />
+              ))}
+            </HStack>
+          </HStack>
+        </Flex>
 
-export default NavBar;
+        {isOpen ? (
+          <Box pb={4} display={{ md: 'none' }}>
+            <Stack as={'nav'} spacing={4}>
+              {props.links.map((link) => (
+                <NavLink url={link.url} title={link.title} />
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
+      </Box>
+    </>
+  );
+}
