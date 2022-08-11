@@ -14,6 +14,7 @@ import {
   Thead,
   Tbody,
   Th,
+  Tr,
   TableContainer,
   Breadcrumb,
   BreadcrumbLink,
@@ -94,7 +95,7 @@ const Watchlist = (props) => {
     return <NothingFound header={data.header} d={d} />;
   }
   return (
-    <Container>
+    <Container mb={10}>
       <Breadcrumb>
         <BreadcrumbItem mt={2}>
           <BreadcrumbLink href="/watchlists">Back to Watchlists</BreadcrumbLink>
@@ -112,8 +113,10 @@ const Watchlist = (props) => {
       <TableContainer>
         <Table size="sm">
           <Thead>
-            <Th>Symbol</Th>
-            {headers}
+            <Tr>
+              <Th>Symbol</Th>
+              {headers}
+            </Tr>
           </Thead>
           <Tbody>{rows}</Tbody>
         </Table>
