@@ -1,4 +1,4 @@
-import Landing from '../Landing';
+import Landing from '../views/Landing';
 import Watchlist from '../tables/Watchlist';
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
