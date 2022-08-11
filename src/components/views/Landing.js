@@ -36,7 +36,7 @@ export default function CallToActionWithAnnotation() {
               _hover={{
                 bg: 'blue.500',
               }}
-              href="/watchlists/puts"
+              href="/watchlists"
               as="a"
             >
               Watchlists!

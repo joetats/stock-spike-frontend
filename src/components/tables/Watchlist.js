@@ -15,6 +15,9 @@ import {
   Tbody,
   Th,
   TableContainer,
+  Breadcrumb,
+  BreadcrumbLink,
+  BreadcrumbItem,
 } from '@chakra-ui/react';
 
 const Watchlist = (props) => {
@@ -92,6 +95,11 @@ const Watchlist = (props) => {
   }
   return (
     <Container>
+      <Breadcrumb>
+        <BreadcrumbItem mt={2}>
+          <BreadcrumbLink href="/watchlists">Back to Watchlists</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <Stack spacing={2} my={5}>
         <Heading>{data.header}</Heading>
         <Text fontSize="sm">Updated: {d} UTC</Text>

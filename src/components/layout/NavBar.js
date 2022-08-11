@@ -19,7 +19,7 @@ const NavLink = (props) => (
       textDecoration: 'none',
       bg: useColorModeValue('blue.200', 'blue.700'),
     }}
-    href={'/watchlists' + props.url}
+    href={props.url}
   >
     {props.title}
   </Link>
@@ -49,9 +49,7 @@ export default function Simple(props) {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
-              {props.links.map((link) => (
-                <NavLink url={link.url} title={link.title} />
-              ))}
+              <NavLink url="/watchlists" title="Watchlists" />
             </HStack>
           </HStack>
         </Flex>
@@ -59,9 +57,7 @@ export default function Simple(props) {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {props.links.map((link) => (
-                <NavLink url={link.url} title={link.title} />
-              ))}
+              <NavLink url="/watchlists" title="Watchlists" />
             </Stack>
           </Box>
         ) : null}
