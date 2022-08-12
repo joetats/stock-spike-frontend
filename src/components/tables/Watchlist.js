@@ -10,6 +10,7 @@ import {
   Text,
   Stack,
   Container,
+  Divider,
   Table,
   Thead,
   Tbody,
@@ -105,6 +106,8 @@ const Watchlist = (props) => {
         <Heading>{data.header}</Heading>
         <Text fontSize="sm">Updated: {d} UTC</Text>
       </Stack>
+
+      <Divider my={4} />
 
       <Text align="center" my={2}>
         {data.subheader}
