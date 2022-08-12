@@ -1,5 +1,6 @@
 import {
   Container,
+  Divider,
   Stack,
   Heading,
   Text,
@@ -20,6 +21,7 @@ const NothingFound = (props) => {
         <Heading>{props.header}</Heading>
         <Text fontSize="sm">Updated: {props.d}</Text>
       </Stack>
+      <Divider my={4} />
       <Heading size="lg" my={3}>
         Nothing found!
       </Heading>
