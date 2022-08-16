@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import WatchlistRow from './WatchlistRow';
 import NothingFound from './NothingFound';
-import SortIcon from './SortIcon';
+import WatchlistHeader from './WatchlistHeader';
 import {
   Heading,
   Text,
@@ -12,10 +12,7 @@ import {
   Container,
   Divider,
   Table,
-  Thead,
   Tbody,
-  Th,
-  Tr,
   TableContainer,
   Breadcrumb,
   BreadcrumbLink,
@@ -79,19 +76,6 @@ const Watchlist = (props) => {
     />
   ));
 
-  const headers = data.columns.map((c) => (
-    <Th key={c.name} onClick={() => sortColHandler(c.name, c.type)}>
-      <small>
-        {c.display}{' '}
-        {sortCol.sortCol === c.name ? (
-          <SortIcon asc={sortCol.sortColAsc} />
-        ) : (
-          ''
-        )}
-      </small>
-    </Th>
-  ));
-
   if (data.data.length === 0) {
     return <NothingFound header={data.header} d={d} />;
   }
@@ -115,12 +99,11 @@ const Watchlist = (props) => {
 
       <TableContainer>
         <Table size="sm">
-          <Thead>
-            <Tr>
-              <Th>Symbol</Th>
-              {headers}
-            </Tr>
-          </Thead>
+          <WatchlistHeader
+            columns={data.columns}
+            sortCol={sortCol}
+            sortColHandler={sortColHandler}
+          />
           <Tbody>{rows}</Tbody>
         </Table>
       </TableContainer>
