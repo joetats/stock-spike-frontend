@@ -7,7 +7,7 @@ const WatchlistRow = (props) => {
 
   const parseData = (type, val) => {
     if (type === 'date') {
-      const d = new Date(val);
+      const d = new Date(val + ' EST');
       return d.toLocaleString('en-US', {
         month: '2-digit',
         day: '2-digit',
