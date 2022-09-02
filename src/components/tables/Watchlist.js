@@ -88,7 +88,7 @@ const Watchlist = (props) => {
       </Breadcrumb>
       <Stack spacing={2} my={5}>
         <Heading>{data.header}</Heading>
-        <Text fontSize="sm">Updated: {d} UTC</Text>
+        <Text fontSize="sm">Updated: {d} ET</Text>
       </Stack>
 
       <Divider my={4} />
