@@ -7,7 +7,6 @@ const WatchlistRow = (props) => {
 
   const parseData = (type, val) => {
     if (type === 'date') {
-      console.log(val)
       const dateChunks = val.split('-')
       return `${dateChunks[1]}/${dateChunks[2]}`;
     } else if (type === 'price') {
