@@ -7,11 +7,8 @@ const WatchlistRow = (props) => {
 
   const parseData = (type, val) => {
     if (type === 'date') {
-      const d = new Date(val + ' EST');
-      return d.toLocaleString('en-US', {
-        month: '2-digit',
-        day: '2-digit',
-      });
+      const dateChunks = val.split('-')
+      return `${dateChunks[1]}/${dateChunks[2]}`;
     } else if (type === 'price') {
       return `$${val.toFixed(2)}`;
     } else if (type === 'percentage') {
