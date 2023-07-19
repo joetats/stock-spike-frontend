@@ -9,11 +9,15 @@ def container(children):
 def row(children):
     return html.Div(children=children, className="row")
 
-def column(children, width):
+def col(children, width):
     return html.Div(children=children, className=f"col-{width}")
 
 def navbar(children):
-    pass
+    return html.Nav(
+        html.Div(
+            html.A(children, className="navbar-brand"),
+            className="container-fluid"
+        ), className="navbar bg-body-tertiary")
 
 def footer(children):
     pass
