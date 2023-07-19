@@ -9,3 +9,17 @@ def container(children):
 def row(children):
     return html.Div(children=children, className="row")
 
+def column(children, width):
+    return html.Div(children=children, className=f"col-{width}")
+
+def navbar(children):
+    pass
+
+def footer(children):
+    pass
+
+def card_button(text, link_to):
+    pass
+
+def button(text, id):
+    pass
